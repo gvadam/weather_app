@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="address">DHAKA, BD</string>
+    <string name="updated_at">20 April 2012, 20:08 PM</string>
+    <string name="status">Clear Sky</string>
+    <string name="temp">29°C</string>
+    <string name="min_temp">Min Temp: 25°C</string>
+    <string name="max_temp">Max Temp: 32°C</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunrise_time">06:40 AM</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunset_time">07:10 PM</string>
+    <string name="wind">Wind</string>
+    <string name="wind_speed">5 mph</string>
+    <string name="pressure">Pressure</string>
+    <string name="pressure_measure">29.97 inHg.</string>
+    <string name="humidity">Humidity</string>
+    <string name="humidity_pressure">54%</string>
+    <string name="created_by">Created By</string>
+    <string name="about">Adam</string>
+    <string name="error_text">Something went wrong</string>
+    <string name="desc">image</string>
+</resources>
