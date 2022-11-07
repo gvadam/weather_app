@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/gradient_bg.xml" value="0.104" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/afternoon_bg.xml" value="0.1" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/cloudy_bg.xml" value="0.1" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/gradient_bg.xml" value="0.1" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/morning_bg.xml" value="0.182" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/night_bg.xml" value="0.1" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/sunset_bg.xml" value="0.1" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>

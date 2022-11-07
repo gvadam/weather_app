@@ -1,354 +1,480 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
-    android:orientation="vertical"
-    android:padding="25dp">
+    android:id="@+id/background"
+    android:background="@drawable/morning_bg"
+    android:visibility="visible">
 
-    <RelativeLayout
-        android:id="@+id/mainContainer"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="10dp">
 
-        <LinearLayout
-            android:id="@+id/addressContainer"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Miami, FL"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/address"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/temp"
+        android:textSize="90sp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/temp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:text="@string/status"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/feels_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        app:layout_constraintStart_toStartOf="@id/status"
+        android:text="@string/feels_like"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sun, 9:14 PM"
+        app:layout_constraintStart_toStartOf="@id/address"
+        app:layout_constraintEnd_toEndOf="@id/address"
+        app:layout_constraintTop_toBottomOf="@id/address"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/temp_min"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        app:layout_constraintStart_toStartOf="@id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textSize="22sp"
+        android:text="@string/min_temp" />
+
+    <TextView
+        android:id="@+id/temp_max"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textSize="22sp"
+        android:text="@string/max_temp" />
+
+    <HorizontalScrollView
+            android:id="@+id/forecastScrollView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/temp_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/updated_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/updated_at"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/overviewContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/status"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif-thin"
-                android:text="@string/temp"
-                android:textSize="90sp" />
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/forecast_container1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:background="#3CF1EBF1"/>
 
                 <TextView
-                    android:id="@+id/temp_min"
+                    android:id="@+id/forecast_date1"
+                    app:layout_constraintTop_toTopOf="@id/forecast_container1"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container1"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/min_temp" />
-
-                <Space
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginTop="5dp"
+                    android:text="Mon"
+                    android:textSize="15sp"/>
 
                 <TextView
-                    android:id="@+id/temp_max"
+                    android:id="@+id/forecast_temp1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/max_temp" />
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="@id/forecast_container1"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container1"
+                    app:layout_constraintTop_toBottomOf="@id/forecast_date1"
+                    android:layout_marginTop="15dp"
+                    android:text="75°F"
+                    android:textSize="20sp"/>
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/forecast_container2"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/forecast_container1"
+                    android:background="#3CF1EBF1"/>
 
-
-        <LinearLayout
-            android:id="@+id/detailsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_date2"
+                    app:layout_constraintTop_toTopOf="@id/forecast_container2"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container2"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_marginTop="5dp"
+                    android:text="Tue"
+                    android:textSize="15sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/sunrise"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sunrise"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/sunrise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sunrise_time"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_temp2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    app:layout_constraintStart_toStartOf="@id/forecast_container2"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container2"
+                    app:layout_constraintTop_toBottomOf="@id/forecast_date2"
+                    android:layout_marginTop="15dp"
+                    android:text="71°F"
+                    android:textSize="20sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/sunset"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
+                <ImageView
+                    android:id="@+id/forecast_container3"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/forecast_container2"
+                    android:background="#3CF1EBF1"/>
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sunset"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/sunset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sunset_time"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_date3"
+                    app:layout_constraintTop_toTopOf="@id/forecast_container3"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container3"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_marginTop="5dp"
+                    android:text="Wed"
+                    android:textSize="15sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/wind"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/wind"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/wind"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/wind_speed"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_temp3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    app:layout_constraintStart_toStartOf="@id/forecast_container3"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container3"
+                    app:layout_constraintTop_toBottomOf="@id/forecast_date3"
+                    android:layout_marginTop="15dp"
+                    android:text="74°F"
+                    android:textSize="20sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/pressure"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
+                <ImageView
+                    android:id="@+id/forecast_container4"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/forecast_container3"
+                    android:background="#3CF1EBF1"/>
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pressure"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/pressure"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pressure_measure"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_date4"
+                    app:layout_constraintTop_toTopOf="@id/forecast_container4"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container4"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_marginTop="5dp"
+                    android:text="Thu"
+                    android:textSize="15sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/humidity"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/humidity"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/humidity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/humidity_pressure"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/forecast_temp4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    app:layout_constraintStart_toStartOf="@id/forecast_container4"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container4"
+                    app:layout_constraintTop_toBottomOf="@id/forecast_date4"
+                    android:layout_marginTop="15dp"
+                    android:text="75°F"
+                    android:textSize="20sp"/>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/info"
-                        app:tint="#FFFFFF"
-                        android:contentDescription="@string/desc"/>
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp" />
+                <ImageView
+                    android:id="@+id/forecast_container5"
+                    android:layout_width="80dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/forecast_container4"
+                    android:background="#3CF1EBF1"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/created_by"
-                        android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/forecast_date5"
+                    app:layout_constraintTop_toTopOf="@id/forecast_container5"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container5"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fri"
+                    android:textSize="15sp"/>
 
-                    <TextView
-                        android:id="@+id/about"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/forecast_temp5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/forecast_container5"
+                    app:layout_constraintEnd_toEndOf="@id/forecast_container5"
+                    app:layout_constraintTop_toBottomOf="@id/forecast_date5"
+                    android:layout_marginTop="15dp"
+                    android:text="73°F"
+                    android:textSize="20sp"/>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </HorizontalScrollView>
+
+
+    <ImageView
+        android:id="@+id/container_sun"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toBottomOf="@id/forecastScrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:background="#3CF1EBF1"/>
+
+    <TextView
+        android:id="@+id/sunrise_label"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintTop_toTopOf="@id/container_sun"
+        app:layout_constraintStart_toStartOf="@id/container_sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sunrise"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/sunrise_icon"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/sunrise_label"
+        app:layout_constraintEnd_toEndOf="@id/sunrise_label"
+        app:layout_constraintTop_toBottomOf="@id/sunrise_label"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/sunrise"
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/desc"/>
+
+    <TextView
+        android:id="@+id/sunrise"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/sunrise_icon"
+        app:layout_constraintEnd_toEndOf="@id/sunrise_icon"
+        app:layout_constraintTop_toBottomOf="@id/sunrise_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sunrise_time"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/sunset_label"
+        app:layout_constraintTop_toTopOf="@id/container_sun"
+        app:layout_constraintEnd_toEndOf="@id/container_sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/sunset"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/sunset_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/sunset_label"
+        app:layout_constraintEnd_toEndOf="@id/sunset_label"
+        app:layout_constraintTop_toBottomOf="@id/sunset_label"
+        android:src="@drawable/sunset"
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/desc"/>
+
+    <TextView
+        android:id="@+id/sunset"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/sunset_icon"
+        app:layout_constraintEnd_toEndOf="@id/sunset_icon"
+        app:layout_constraintTop_toBottomOf="@id/sunset_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sunset_time"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/container_stats"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toBottomOf="@id/container_sun"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="#3CF1EBF1"/>
+
+    <TextView
+        android:id="@+id/wind_label"
+        app:layout_constraintStart_toStartOf="@id/container_stats"
+        app:layout_constraintTop_toTopOf="@id/container_stats"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wind"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/wind_icon"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/wind_label"
+        app:layout_constraintEnd_toEndOf="@id/wind_label"
+        app:layout_constraintTop_toBottomOf="@id/wind_label"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/wind"
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/desc"/>
+
+    <TextView
+        android:id="@+id/wind"
+        app:layout_constraintStart_toStartOf="@id/wind_label"
+        app:layout_constraintEnd_toEndOf="@id/wind_label"
+        app:layout_constraintBottom_toBottomOf="@id/container_stats"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wind_speed"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/pressure_label"
+        app:layout_constraintStart_toStartOf="@id/container_stats"
+        app:layout_constraintEnd_toEndOf="@id/container_stats"
+        app:layout_constraintTop_toTopOf="@id/container_stats"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pressure"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/pressure_icon"
+        app:layout_constraintTop_toBottomOf="@id/pressure_label"
+        app:layout_constraintStart_toStartOf="@id/pressure_label"
+        app:layout_constraintEnd_toEndOf="@id/pressure_label"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/pressure"
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/desc"/>
+
+    <TextView
+        android:id="@+id/pressure"
+        app:layout_constraintStart_toStartOf="@id/pressure_label"
+        app:layout_constraintEnd_toEndOf="@id/pressure_label"
+        app:layout_constraintBottom_toBottomOf="@id/container_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/pressure_measure"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/humidity_label"
+        app:layout_constraintEnd_toEndOf="@id/container_stats"
+        app:layout_constraintTop_toTopOf="@id/container_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/humidity"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/humidity_icon"
+        app:layout_constraintStart_toStartOf="@id/humidity_label"
+        app:layout_constraintEnd_toEndOf="@id/humidity_label"
+        app:layout_constraintTop_toBottomOf="@id/humidity_label"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/humidity"
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/desc"/>
+
+    <TextView
+        android:id="@+id/humidity"
+        app:layout_constraintStart_toStartOf="@id/humidity_label"
+        app:layout_constraintEnd_toEndOf="@id/humidity_label"
+        app:layout_constraintBottom_toBottomOf="@id/container_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/humidity_pressure"
+        android:textSize="18sp" />
 
     <ProgressBar
         android:id="@+id/loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/errorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/error_text"
         android:visibility="gone" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</RelativeLayout>
+</ScrollView>
