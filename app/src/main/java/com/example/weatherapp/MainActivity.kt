@@ -132,21 +132,35 @@ class MainActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.forecast_temp1).text = temp1
                     findViewById<TextView>(R.id.forecast_date1).text = date
 
-                    /**
-                    var cur: Int = 1
-                    val max: Int = 5
-                    var i: Int = 1
+                    var temps = mutableListOf<String>()
+                    var days = mutableListOf<String>()
+                    var cur = 1
+                    val max = 5
+                    var i = 1
                     var prevDate = date
 
-                    while (cur != max) {
-                        val x = jsonObject2.getJSONArray("list").getJSONObject(i).getLong("dt")
-                        val currDate = SimpleDateFormat("EEE", Locale.ENGLISH).format(Date(date1 * 1000))
+                    while (cur < max) {
+                        val dt: Long = jsonObject2.getJSONArray("list").getJSONObject(i).getLong("dt")
+                        val currDate = SimpleDateFormat("EEE", Locale.ENGLISH).format(Date(dt * 1000))
                         if(prevDate != currDate){
+                            var currTemp: String = jsonObject2.getJSONArray("list").getJSONObject(i).getJSONObject("main").getLong("temp").toString() + "°F"
+                            temps.add(currTemp)
+                            days.add(currDate)
                             prevDate = currDate
+                            cur++
                         }
                         i++
-                    }*/
+                    }
 
+                    findViewById<TextView>(R.id.forecast_temp2).text = temps[0]
+                    findViewById<TextView>(R.id.forecast_date2).text = days[0]
+                    findViewById<TextView>(R.id.forecast_temp3).text = temps[1]
+                    findViewById<TextView>(R.id.forecast_date3).text = days[1]
+                    findViewById<TextView>(R.id.forecast_temp4).text = temps[2]
+                    findViewById<TextView>(R.id.forecast_date4).text = days[2]
+                    findViewById<TextView>(R.id.forecast_temp5).text = temps[3]
+                    findViewById<TextView>(R.id.forecast_date5).text = days[3]
+                    /**
                     val day2 = jsonObject2.getJSONArray("list").getJSONObject(3).getJSONObject("main")
                     val temp2: String = day2.getLong("temp").toString() + "°F"
                     findViewById<TextView>(R.id.forecast_temp2).text = temp2
@@ -166,6 +180,8 @@ class MainActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.forecast_temp4).text = temp4
                     val date4: Long  = jsonObject2.getJSONArray("list").getJSONObject(18).getLong("dt")
                     findViewById<TextView>(R.id.forecast_date4).text = SimpleDateFormat("EEE", Locale.ENGLISH).format(Date(date4 * 1000))
+
+                    */
 
                     findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
                     background.visibility = View.VISIBLE
